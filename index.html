@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto DM Reply System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i data-lucide="zap"></i>
+                    <span>AutoDM Pro</span>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#dashboard" class="nav-link active" data-section="dashboard"><i data-lucide="home"></i><span>Dashboard</span></a></li>
+                    <li><a href="#platforms" class="nav-link" data-section="platforms"><i data-lucide="smartphone"></i><span>Platforms</span></a></li>
+                    <li><a href="#rules" class="nav-link" data-section="rules"><i data-lucide="settings"></i><span>Auto Rules</span></a></li>
+                    <li><a href="#templates" class="nav-link" data-section="templates"><i data-lucide="message-square"></i><span>Templates</span></a></li>
+                    <li><a href="#analytics" class="nav-link" data-section="analytics"><i data-lucide="bar-chart"></i><span>Analytics</span></a></li>
+                    <li><a href="#settings" class="nav-link" data-section="settings"><i data-lucide="cog"></i><span>Settings</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Here's your auto DM system overview</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="message-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">1,247</div>
+                            <div class="stat-label">Total Replies</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="smartphone"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Connected Platforms</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Active Rules</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">2.3min</div>
+                            <div class="stat-label">Avg Response</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Recent Activity</h3>
+                            <span class="status status--success">Live</span>
+                        </div>
+                        <div class="card__body">
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon instagram">
+                                        <i data-lucide="instagram"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Welcome rule</strong> triggered on Instagram</p>
+                                        <span class="activity-time">2 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon whatsapp">
+                                        <i data-lucide="message-circle"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Business Hours rule</strong> triggered on WhatsApp</p>
+                                        <span class="activity-time">5 minutes ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon pinterest">
+                                        <i data-lucide="image"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Product Inquiry rule</strong> triggered on Pinterest</p>
+                                        <span class="activity-time">12 minutes ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Platforms Section -->
+            <section id="platforms" class="content-section">
+                <div class="section-header">
+                    <h1>Platform Management</h1>
+                    <p>Connect and manage your social media platforms</p>
+                </div>
+
+                <div class="platforms-grid" id="platformsGrid">
+                    <!-- Platform cards will be generated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Rules Section -->
+            <section id="rules" class="content-section">
+                <div class="section-header">
+                    <h1>Auto Reply Rules</h1>
+                    <p>Manage your automated response rules</p>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn--primary" id="createRuleBtn">
+                        <i data-lucide="plus"></i>
+                        Create New Rule
+                    </button>
+                </div>
+
+                <div class="rules-list" id="rulesList">
+                    <!-- Rules will be generated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Templates Section -->
+            <section id="templates" class="content-section">
+                <div class="section-header">
+                    <h1>Message Templates</h1>
+                    <p>Create and manage your response templates</p>
+                </div>
+
+                <div class="section-actions">
+                    <button class="btn btn--primary" id="createTemplateBtn">
+                        <i data-lucide="plus"></i>
+                        Create Template
+                    </button>
+                </div>
+
+                <div class="templates-grid" id="templatesGrid">
+                    <!-- Templates will be generated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="content-section">
+                <div class="section-header">
+                    <h1>Analytics</h1>
+                    <p>Monitor your auto-reply performance</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Weekly Replies</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="weeklyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Platform Breakdown</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="platformChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section">
+                <div class="section-header">
+                    <h1>Settings</h1>
+                    <p>Configure your system preferences</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>General Settings</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="form-group">
+                                <label class="form-label">Default Response Delay</label>
+                                <select class="form-control">
+                                    <option>Instant</option>
+                                    <option>1 minute</option>
+                                    <option selected>2 minutes</option>
+                                    <option>5 minutes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Timezone</label>
+                                <select class="form-control">
+                                    <option selected>UTC-5 (Eastern)</option>
+                                    <option>UTC-8 (Pacific)</option>
+                                    <option>UTC+0 (GMT)</option>
+                                    <option>UTC+5:30 (IST)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Language</label>
+                                <select class="form-control">
+                                    <option selected>English</option>
+                                    <option>Spanish</option>
+                                    <option>French</option>
+                                    <option>German</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <h3>Notification Settings</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="settings-toggle">
+                                <label>Email notifications for new replies</label>
+                                <input type="checkbox" class="toggle" checked>
+                            </div>
+                            <div class="settings-toggle">
+                                <label>Desktop notifications</label>
+                                <input type="checkbox" class="toggle" checked>
+                            </div>
+                            <div class="settings-toggle">
+                                <label>Daily summary reports</label>
+                                <input type="checkbox" class="toggle">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal hidden" id="ruleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="ruleModalTitle">Create New Rule</h3>
+                <button class="modal-close" id="closeRuleModal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="ruleForm">
+                    <div class="form-group">
+                        <label class="form-label">Rule Name</label>
+                        <input type="text" class="form-control" id="ruleName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Platforms</label>
+                        <div class="platform-checkboxes" id="platformCheckboxes">
+                            <!-- Generated by JS -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Trigger Keywords (comma separated)</label>
+                        <input type="text" class="form-control" id="ruleTriggers" placeholder="hello, hi, hey" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Response Message</label>
+                        <textarea class="form-control" id="ruleResponse" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Response Delay (seconds)</label>
+                        <input type="number" class="form-control" id="ruleDelay" value="2" min="0" max="300">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" id="cancelRule">Cancel</button>
+                <button class="btn btn--primary" id="saveRule">Save Rule</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="templateModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="templateModalTitle">Create New Template</h3>
+                <button class="modal-close" id="closeTemplateModal">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="templateForm">
+                    <div class="form-group">
+                        <label class="form-label">Template Name</label>
+                        <input type="text" class="form-control" id="templateName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-control" id="templateCategory">
+                            <option>Welcome</option>
+                            <option>FAQ</option>
+                            <option>Away</option>
+                            <option>Business</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Content</label>
+                        <textarea class="form-control" id="templateContent" rows="4" placeholder="Use {{name}} for user name, {{time}} for current time" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn--secondary" id="cancelTemplate">Cancel</button>
+                <button class="btn btn--primary" id="saveTemplate">Save Template</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast hidden" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
